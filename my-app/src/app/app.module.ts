@@ -11,11 +11,6 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 //Modulo de peticiones http
 import { HttpClientModule } from '@angular/common/http'
 
-//Pipes
-import { FilterPipe } from './pipe/filter.pipe';
-
-
-
 //Rutas
 import { AppRoutingModule } from './app-routing.module';
 
@@ -31,7 +26,6 @@ import { MesasComponent } from './components/mesas/mesas.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { BurguerComponent } from './components/menu/burguer/burguer.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
-import { GetOrderComponent } from './components/menu/get-order/get-order.component';
 import { BreakfastsComponent }from './components/menu/breakfasts/breakfasts.component';
 
 @NgModule({
@@ -44,9 +38,8 @@ import { BreakfastsComponent }from './components/menu/breakfasts/breakfasts.comp
     NavbarComponent,
     BurguerComponent,
     BreakfastsComponent,
-    FilterPipe,
     LoadingComponent,
-    GetOrderComponent,
+    
     
   ],
     imports: [

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { menuModel } from '../../../models/menu.model';
 import { WaiqueenService} from '../../../services/waiqueen.service';
 import { orderModel } from '../../../models/order.model';
+import { orderfireModel } from '../../../models/orderfire.model';
 
 
 @Component({
@@ -14,6 +15,13 @@ import { orderModel } from '../../../models/order.model';
 export class BurguerComponent implements OnInit {
  //Variable que almacena el total
  total:number = 0;
+ //Variable de tipo objeto para almacenar la orden final que se enviara finalmente a firebase
+ objOrderF:orderfireModel = {
+  burguer:'',
+  filling:'',
+  acomp:'',
+  drinks:''
+ };
  //Variable para almacenar orden
  arrayOrder: Array<orderModel> = [];
  objOrder: orderModel = { 
@@ -22,7 +30,6 @@ export class BurguerComponent implements OnInit {
                          price: 0,
                           id:''
                        };
-
 
   //Varible para almacenar lo que retorna la funcion que esta alojada en el servicio
   menus: menuModel[]=[];
@@ -76,28 +83,54 @@ export class BurguerComponent implements OnInit {
         })
   }
   addItem(name:string, price:number ,categoria:string){
-    // console.log(`${name} ${price} ${categoria}`);
     
      this.objOrder.categoria = categoria;
      this.objOrder.name = name;
      this.objOrder.price = price;
      this.total += this.objOrder.price;
-    // this.objOrder.total = this.objOrder.total + price;
-     console.log(this.objOrder);
-    
      this.arrayOrder.push(this.objOrder);
-     
-     this.objOrder = {id:'', categoria: '', name: '',  price: 0}
-    
-     console.log(`Este es el total ${this.total}`);
      console.log(this.arrayOrder);
-     
+     this.objOrder = {id:'', categoria: '', name: '',  price: 0}
+
    }
  
-  
-
- deleteItem(){
-   console.log('btn eliminar okey');
+   
+  //Funcion que elimina el Item
+  deleteItem(i, price){
+    //Obtengo el indice del objeto
+    this.arrayOrder.splice(i, 1);
+    this.total -= price; 
+    
  }
+  
+     addOrderfire(){
+      
+     this.arrayOrder.forEach(element => {
+          switch (element.categoria) {
+            case 'Hamburguesas':
+             this.objOrderF['burguer'] =  element.name
+              break;
+              case 'Relleno':
+               this.objOrderF['filling'] =  element.name
+               break;
+               case 'Bebidas':
+                 this.objOrderF['drinks'] =  element.name
+                 break;
+                 case 'Acompañamientos':
+                   this.objOrderF['acomp'] =  element.name
+                   break;
+          
+        };
+        
+    })
+    // return this.objOrderF;
+    this.waiqueenservice.addOrder(this.objOrderF)
+    this.objOrderF = {burguer:'', filling: '', acomp: '',  drinks:''}
+    this.arrayOrder = [];
+    this.total=0;
+  }
+
 
 }
+
+

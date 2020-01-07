@@ -5,6 +5,4 @@ export class orderModel{
     name:string;
     price:number;
     
-
-
 }

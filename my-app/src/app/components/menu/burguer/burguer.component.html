@@ -15,7 +15,6 @@
                     <div class="card-body centerbtn" *ngFor="let item of burguer">
                         {{item.name}} ${{item.price}}
                         <button (click)="addItem(item.name, item.price, item.categoria)" class=" btn btn-success"> <i class="fa fa-plus"></i> Agregar</button>
-                        <button (click)="deleteItem()" class="btn btn-danger "><i class="far fa-trash-alt">Eliminar</i></button>
                     </div>
 
 
@@ -39,7 +38,7 @@
 
                     <div class="card-body centerbtn" *ngFor="let item of filling">{{item.name}} ${{item.price}}
                         <button (click)="addItem(item.name, item.price, item.categoria)" class="btn btn-success"><i class="fa fa-plus"></i>Agregar</button>
-                        <button class="btn btn-danger"><i class="far fa-trash-alt">Eliminar</i></button>
+
                     </div>
 
 
@@ -62,7 +61,7 @@
 
                     <div class="card-body centerbtn" *ngFor="let item of accom">{{item.name}} ${{item.price}}
                         <button (click)="addItem(item.name, item.price, item.categoria)" class="btn btn-success"><i class="fa fa-plus"></i>Agregar</button>
-                        <button class="btn btn-danger"><i class="far fa-trash-alt">Eliminar</i></button>
+
                     </div>
 
 
@@ -85,7 +84,7 @@
 
                     <div class="card-body centerbtn" *ngFor="let item of drinks">{{item.name}} ${{item.price}}
                         <button (click)="addItem(item.name, item.price, item.categoria)" class="btn btn-success"><i class="fa fa-plus"></i>Agregar</button>
-                        <button class="btn btn-danger"><i class="far fa-trash-alt">Eliminar</i></button>
+
                     </div>
 
 
@@ -105,10 +104,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of arrayOrder">
+                <tr *ngFor="let item of arrayOrder;let i = index">
                     <th scope="row">{{item.name}} </th>
                     <td>${{item.price}}</td>
-                    <td> <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+                    <td> <button (click)="deleteItem(i, item.price)" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
 
 
 
@@ -121,7 +120,7 @@
             </tbody>
         </table>
         <div class="contenbutton">
-            <button class="btn btn-info">Enviar pedido</button>
+            <button (click)="addOrderfire(arrayOrder)" class="btn btn-info">Enviar pedido</button>
         </div>
     </section>
 </section>
