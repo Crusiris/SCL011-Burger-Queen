@@ -24,6 +24,7 @@ export class BurguerComponent implements OnInit {
   drinks:'',
   total: 0,
   mesa: 0
+
  };
  //Variable para almacenar orden
  arrayOrder: Array<orderModel> = [];
@@ -97,6 +98,7 @@ export class BurguerComponent implements OnInit {
    }
  
 
+
   //Funcion que elimina el Item
   deleteItem(i, price){
     //Obtengo el indice del objeto
@@ -120,8 +122,7 @@ export class BurguerComponent implements OnInit {
                  break;
                  case 'Acompañamientos':
                    this.objOrderF['acomp'] =  element.name
-                   break;
-          
+                  break;
         };
       this.objOrderF['total']= this.total  
       
@@ -132,6 +133,7 @@ export class BurguerComponent implements OnInit {
     this.arrayOrder = [];
     this.total=0;
   }
+
 
 
 }
