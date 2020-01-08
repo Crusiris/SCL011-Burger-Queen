@@ -10,7 +10,7 @@
 }
 
 body {
-    font-size: 16px;
+    font-size: 5px;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -70,4 +70,19 @@ body {
 
 .fadeIn {
     animation-name: fadeIn;
+}
+
+
+/*Contenedor general de menu -burguer*/
+
+.containert {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*Contenedor general de pedidos*/
+
+.containerP {
+    display: flex;
 }

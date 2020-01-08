@@ -3,4 +3,6 @@ export class orderfireModel{
     filling:string;
     acomp:string;
     drinks:string;
+    total:number;
+    mesa:number;
 }

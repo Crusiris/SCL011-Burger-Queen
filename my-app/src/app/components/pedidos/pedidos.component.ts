@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {WaiqueenService} from '../../services/waiqueen.service';
+import { orderfireModel } from '../../models/orderfire.model';
+
+
 
 @Component({
   selector: 'app-pedidos',
@@ -6,12 +10,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
+order:orderfireModel[]=[]
 
-  test = "a ver";
-
-  constructor() { }
+  constructor(private waiqueenservice:WaiqueenService) { }
 
   ngOnInit() {
+
+    this.waiqueenservice.getOrder().subscribe((resp: any)=>{
+      this.order = resp;
+      console.log(this.order);
+    })
   }
 
 }

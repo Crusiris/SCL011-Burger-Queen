@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { menuModel } from '../../../models/menu.model';
 import { WaiqueenService} from '../../../services/waiqueen.service';
 import { orderModel } from '../../../models/order.model';
@@ -13,6 +13,7 @@ import { orderfireModel } from '../../../models/orderfire.model';
 
 
 export class BurguerComponent implements OnInit {
+  @Input() tableNumber: number = 0;
  //Variable que almacena el total
  total:number = 0;
  //Variable de tipo objeto para almacenar la orden final que se enviara finalmente a firebase
@@ -20,7 +21,9 @@ export class BurguerComponent implements OnInit {
   burguer:'',
   filling:'',
   acomp:'',
-  drinks:''
+  drinks:'',
+  total: 0,
+  mesa: 0
  };
  //Variable para almacenar orden
  arrayOrder: Array<orderModel> = [];
@@ -89,12 +92,11 @@ export class BurguerComponent implements OnInit {
      this.objOrder.price = price;
      this.total += this.objOrder.price;
      this.arrayOrder.push(this.objOrder);
-     console.log(this.arrayOrder);
      this.objOrder = {id:'', categoria: '', name: '',  price: 0}
 
    }
  
-   
+
   //Funcion que elimina el Item
   deleteItem(i, price){
     //Obtengo el indice del objeto
@@ -121,11 +123,12 @@ export class BurguerComponent implements OnInit {
                    break;
           
         };
-        
+      this.objOrderF['total']= this.total  
+      
     })
     // return this.objOrderF;
     this.waiqueenservice.addOrder(this.objOrderF)
-    this.objOrderF = {burguer:'', filling: '', acomp: '',  drinks:''}
+    this.objOrderF = {burguer:'', filling: '', acomp: '',  drinks:'', total: 0, mesa: 0}
     this.arrayOrder = [];
     this.total=0;
   }

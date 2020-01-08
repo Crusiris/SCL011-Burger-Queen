@@ -1,2 +1,49 @@
-<p>
-    Hola soy el pedido</p>
+<app-navbar></app-navbar>
+<section class="main-p containerP animated fast fadeIn ">
+    <div *ngFor="let item of order" class="pricing-table recommended  table-responsive-lg">
+
+        <h4 class="table-title table-primary">Mesa 1</h4>
+        <table class="table">
+
+
+            <tbody>
+                <tr class="table-primary">
+                    <td>Hamburguesa</td>
+                    <td>{{item.burguer}}</td>
+                </tr>
+                <tr>
+                    <td>Relleno</td>
+                    <td>{{item.filling}}</td>
+                </tr>
+                <tr class="table-primary">
+                    <td>Acompañante</td>
+                    <td>{{item.acomp}}</td>
+                </tr>
+                <tr>
+                    <td>Bebida</td>
+                    <td>{{item.drinks}}</td>
+                </tr>
+                <tr class="table-primary">
+                    <td>Mesa</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tiempo</td>
+                    <td></td>
+                </tr>
+                <tr class="table-primary">
+                    <td>Total</td>
+                    <td>{{item.total}}$</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="btnlisto">
+                <button class="btn btn-success"> Pedido listo</button>
+            </div>
+        </div>
+    </div>
+
+</section>

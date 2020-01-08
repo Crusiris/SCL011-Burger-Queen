@@ -1,7 +1,7 @@
 import { Component, OnInit   } from '@angular/core';
 import { TablsModel } from '../../models/mesa.model';
 import { WaiqueenService } from '../../services/waiqueen.service';
-import { NgForm } from '@angular/forms';
+
 
 
 
@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./mesas.component.css']
 })
 export class MesasComponent implements OnInit  {
+  
   //Variable para manejar el icono de cargando
   loading:boolean;
   //json donde guardo la informacion que viene en el formulario
@@ -44,7 +45,8 @@ export class MesasComponent implements OnInit  {
 
   //Funcion obtener numero de mesa
   getTable(tableNumber:number){
-    console.log(tableNumber);
+    console.log(tableNumber)
+    return tableNumber;
   }
 
   addtabls(){

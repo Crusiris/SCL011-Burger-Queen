@@ -1,11 +1,3 @@
-/*Contenedor general*/
-
-.containert {
-    display: flex;
-    flex-direction: row;
-}
-
-
 /*Rutas del desayuno y almuerzo*/
 
 .centerbtn {
